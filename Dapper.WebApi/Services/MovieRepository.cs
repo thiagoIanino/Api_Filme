@@ -10,9 +10,9 @@ namespace projeto.movie.api.Services
 {
     public class MovieRepository : BaseRepository, IMovieRepository
     {
-        private readonly ICommandText _commandText;
+        private readonly ICommandTextMovie _commandText;
 
-        public MovieRepository(IConfiguration configuration, ICommandText commandText) : base(configuration)
+        public MovieRepository(IConfiguration configuration, ICommandTextMovie commandText) : base(configuration)
         {
             _commandText = commandText;
 
@@ -44,7 +44,7 @@ namespace projeto.movie.api.Services
             await WithConnection(async conn =>
             {
                 await conn.ExecuteAsync(_commandText.AddMovie,
-                    new { Title = entity.Title, Director = entity.Director, Genres = entity.Genres, ReleaseDate = entity.ReleaseDate, Duration = entity.Duration });
+                    new { Title = entity.Title, Director = entity.Director, ReleaseDate = entity.ReleaseDate, Duration = entity.Duration, Id_Genre = entity.Id_Genre });
             });
 
         }
@@ -53,7 +53,7 @@ namespace projeto.movie.api.Services
             await WithConnection(async conn =>
             {
                 await conn.ExecuteAsync(_commandText.UpdateMovie,
-                    new { Title = entity.Title, Director = entity.Director, Genres = entity.Genres, ReleaseDate = entity.ReleaseDate, Duration = entity.Duration, Id = id });
+                    new { Title = entity.Title, Director = entity.Director,  ReleaseDate = entity.ReleaseDate, Duration = entity.Duration, Id = id, Id_Genre = entity.Id_Genre });
             });
 
         }

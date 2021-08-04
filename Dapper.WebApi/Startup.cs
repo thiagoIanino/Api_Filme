@@ -22,8 +22,11 @@ namespace projeto.movie.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICommandText, CommandText>();
+            services.AddTransient<ICommandTextMovie, CommandTextMovie>();
             services.AddTransient<IMovieRepository, MovieRepository>();
+
+            services.AddTransient<ICommandTextGenre, CommandTextGenre>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddMvc();
 
 

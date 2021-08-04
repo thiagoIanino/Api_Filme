@@ -17,7 +17,7 @@ namespace projeto.movie.api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Movie>> GellAll()
+        public async Task<ActionResult<Movie>> GetAll()
         {
             var Movies = await _MovieRepository.GetAllMovies();
             return Ok(Movies);

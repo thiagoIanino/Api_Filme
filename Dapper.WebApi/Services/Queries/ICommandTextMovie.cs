@@ -1,6 +1,6 @@
 ﻿namespace projeto.movie.api.Services.Queries
 {
-    public interface ICommandText
+    public interface ICommandTextMovie
     {
         string GetMovies { get; }
         string GetMovieById { get; }
